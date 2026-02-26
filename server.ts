@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import mongoose, { Schema, Document } from 'mongoose';
 import cors from 'cors';
 
@@ -35,7 +35,7 @@ const PlayerSave = mongoose.model<IPlayerSave>('PlayerSave', PlayerSaveSchema);
 
 // 3. LAS RUTAS (Endpoints)
 // Ruta para guardar la partida
-app.post('/api/save', async (req: Request, res: Response) => {
+app.post('/api/save', async (req: express.Request, res: express.Response) => {
     try {
         const { playerId, skinActual, progresoVinedo, vidasRestantes, inventario, partidaCompletada } = req.body;
         
@@ -52,7 +52,7 @@ app.post('/api/save', async (req: Request, res: Response) => {
 });
 
 // Ruta principal para comprobar que el servidor está vivo
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (req: express.Request, res: express.Response) => {
     res.send("🍇 Servidor de The Wine Legacy Activo y Funcionando 🍇");
 });
 
